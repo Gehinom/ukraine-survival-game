@@ -1,3 +1,4 @@
 export const gameState = {
-  enemies: []
+  enemies: [],
+  player: null,
 }
