@@ -33,7 +33,6 @@ function createRifleBullet(position) {
 function createBulletImage() {
   const img = new Image()
   img.src = "../weaponImg/Bullet-With-Fireball.gif"
-  console.log('bullet img: ', img)
   return img
 }
 
