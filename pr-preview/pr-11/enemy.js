@@ -37,7 +37,7 @@ const rifleCooldownTime = 2000
 
 function enemyFire() {
   if (!this.rifleCooldown) {
-    console.log('fire!')
+    console.log('enemyFire: making ogon 🔥')
     this.rifleCooldown = true
     enemyRifleFire(this.x, this.y)
 
