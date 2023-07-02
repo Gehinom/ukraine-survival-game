@@ -1,4 +1,5 @@
 import { gameState } from "./gameState.js"
+import { createEnemy } from "./enemy.js"
 
 export function spawnEnemies() {
   const enemiesNum = 10
@@ -7,8 +8,4 @@ export function spawnEnemies() {
     console.log("Spawning Enemy #", i)
     gameState.enemies.push(enemy)
   }
-}
-
-function createEnemy() {
-  return {x: 0, y: 0, vx: 10, vy: 5}
 }
