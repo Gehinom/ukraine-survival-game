@@ -15,6 +15,13 @@ export function spawnPlayer() {
     vy: 0,
     draw: drawPlayer,
     update: updatePlayer,
+    controlsState: {
+      isMovingLeft: false,
+      isMovingRight: false,
+      isMovingDown: false,
+      isMovingUp: false,
+    },
+    speed: 2.5,
   }
 }
 
@@ -31,4 +38,27 @@ function drawPlayer() {
 function updatePlayer() {
   this.x += this.vx
   this.y += this.vy
+
+  if (this.controlsState.isMovingUp) {
+    this.vy = -this.speed
+  }
+  if (this.controlsState.isMovingDown) {
+    this.vy = this.speed
+  }
+  if (this.controlsState.isMovingLeft) {
+    this.vx = -this.speed
+  }
+  if (this.controlsState.isMovingRight) {
+    this.vx = this.speed
+  }
+
+  if ( !this.controlsState.isMovingRight && !this.controlsState.isMovingLeft
+  ) {
+    this.vx = 0
+  }
+
+  if ( !this.controlsState.isMovingUp && !this.controlsState.isMovingDown) {
+    this.vy = 0
+  }
+
 }
