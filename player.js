@@ -11,7 +11,7 @@ export function spawnPlayer() {
     y: 0,
     height: playerHeight,
     width: playerWidth,
-    vx: 1,
+    vx: 0,
     vy: 0,
     draw: drawPlayer,
     update: updatePlayer,
