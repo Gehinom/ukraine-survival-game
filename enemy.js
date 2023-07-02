@@ -1,14 +1,19 @@
 import { canvas, ctx } from "./canvas.js"
 
-export function createEnemy() {
+export const enemySize = {
+  width: 50,
+  height: 50,
+}
+
+export function createEnemy(enemy) {
   return {
     img: createImage(),
-    x: 0,
-    y: 0,
-    height: 50,
-    width: 50,
-    vx: 10,
-    vy: 5,
+    x: enemy.x,
+    y: enemy.y,
+    height: enemySize.width,
+    width: enemySize.height,
+    vx: enemy.vx,
+    vy: enemy.vy,
     draw: drawEnemy,
     update: updateEnemy,
   } 
