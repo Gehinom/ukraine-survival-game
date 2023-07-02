@@ -17,4 +17,4 @@ npx madge --image graph.svg app.js
 ## Architecture Design Plan
 ![Architecture Diagram](readme-img/architecture-diagram.png)
 
-[View/Edit image in full screen](https://gehinom.github.io/ukraine-survival-game/graph.svg)
+[View/Edit image in full screen](https://drive.google.com/file/d/1A4ky3xO43eAG6_D2c-_BjhCF8kfpck7a/view?usp=sharing)
