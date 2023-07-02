@@ -10,6 +10,6 @@ npx madge --image graph.svg app.js
 ```
 (GraphViz has to be installed on your PC)
 
-![dependensies graph](https://darthvanger.github.io/ghost-of-kyiv/graph.svg)
+![dependensies graph](https://gehinom.github.io/ukraine-survival-game/graph.svg)
 
-[View image in full screen](https://darthvanger.github.io/ghost-of-kyiv/graph.svg)
+[View image in full screen](https://gehinom.github.io/ukraine-survival-game/graph.svg)
