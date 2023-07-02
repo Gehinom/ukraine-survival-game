@@ -12,5 +12,10 @@ export function gameLoop() {
     enemy.draw()
   }
 
+  for (let enemyBullet of gameState.enemyBullets) {
+    enemyBullet.update()
+    enemyBullet.draw()
+  }
+
   requestAnimationFrame(gameLoop)
 }
