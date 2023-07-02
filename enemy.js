@@ -15,15 +15,12 @@ export function createEnemy() {
 }
 
 function drawEnemy() {
-  console.log('drawEnemy')
-  console.log(this)
   ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
 }
 
 function updateEnemy() {
   this.x += this.vx
   this.y += this.vy
-  console.log('updateEnemy') 
 }
 
 function createImage() {
