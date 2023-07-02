@@ -13,3 +13,8 @@ npx madge --image graph.svg app.js
 ![dependensies graph](https://gehinom.github.io/ukraine-survival-game/graph.svg)
 
 [View image in full screen](https://gehinom.github.io/ukraine-survival-game/graph.svg)
+
+## Architecture Design Plan
+![Architecture Diagram](readme-img/architecture-diagram.png)
+
+[View/Edit image in full screen](https://gehinom.github.io/ukraine-survival-game/graph.svg)
