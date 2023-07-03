@@ -1,6 +1,7 @@
 import { gameState } from "./gameState.js"
 import { ctx, canvas} from "./canvas.js"
 import { isCollision } from "./collisions.js"
+import { drawPlayerStats } from "./playerStats.js"
 
 export function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -22,5 +23,6 @@ export function gameLoop() {
     enemyBullet.draw()
   }
 
+  drawPlayerStats()
   requestAnimationFrame(gameLoop)
 }
