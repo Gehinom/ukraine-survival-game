@@ -11,7 +11,10 @@ export function gameLoop() {
   for (let enemy of gameState.enemies) {
     enemy.update()
     enemy.draw()
-    console.log(isCollision(gameState.player, enemy))
+    if (isCollision(gameState.player, enemy)) {
+      gameState.player.hp -= 1
+      console.log(gameState.player.hp)
+    }
   }
 
   for (let enemyBullet of gameState.enemyBullets) {

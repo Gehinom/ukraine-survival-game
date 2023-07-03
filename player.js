@@ -13,6 +13,7 @@ export function spawnPlayer() {
     width: playerWidth,
     vx: 0,
     vy: 0,
+    hp: 100,
     draw: drawPlayer,
     update: updatePlayer,
     controlsState: {
