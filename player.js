@@ -1,4 +1,4 @@
-import { canvas, ctx } from "./canvas.js"
+import { ctx } from "./canvas.js"
 import { gameState } from "./gameState.js"
 
 const playerWidth = 50;
