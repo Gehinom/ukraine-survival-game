@@ -7,8 +7,8 @@ const playerHeight = playerWidth * 1080 / 640; // 1.6875
 export function spawnPlayer() {
   gameState.player = {
     img: createImage(),
-    x: 0,
-    y: 0,
+    x: window.innerHeight / 2,
+    y: window.innerWidth / 2,
     height: playerHeight,
     width: playerWidth,
     vx: 0,
