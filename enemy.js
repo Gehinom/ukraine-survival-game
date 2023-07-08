@@ -9,7 +9,7 @@ export const enemySize = {
 
 export function createEnemy(enemy) {
   return {
-    img: createImage('enemiesImg/orc_idle.png'),
+    img: createImage('img/enemy/orc_idle.png'),
     x: enemy.x,
     y: enemy.y,
     speed: 1,
@@ -29,7 +29,7 @@ export function createEnemy(enemy) {
 
 export function createTank(enemy) {
   return {
-    img: createImage('enemiesImg/tank.png'),
+    img: createImage('img/enemy/tank.png'),
     x: enemy.x,
     y: enemy.y,
     speed: 1,
