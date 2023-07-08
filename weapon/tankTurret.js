@@ -1,7 +1,7 @@
-import { ctx, canvas } from "../canvas.js"
+import { ctx } from "../canvas.js"
 import { gameState } from "../gameState.js"
 
-export const bulletSize = {
+export const tankShellSize = {
   width: 20,
   height: 20,
 }
@@ -11,43 +11,43 @@ export function enemyTankFire(enemy) {
   const distY = (enemy.y + enemy.height / 2) - (gameState.player.y + gameState.player.height / 2)
   const dist = Math.sqrt(distX * distX + distY * distY)
 
-  const bullet = createRifleBullet({
+  const tankShell = createTankShell({
     x: enemy.x,
     y: enemy.y,
   })
 
-  bullet.vx = - distX / dist * bullet.speed
-  bullet.vy = - distY / dist * bullet.speed
+  tankShell.vx = - distX / dist * tankShell.speed
+  tankShell.vy = - distY / dist * tankShell.speed
 
-  gameState.enemyBullets.push(bullet)
+  gameState.enemyTankShells.push(tankShell)
 }
 
-function createRifleBullet(position) {
+function createTankShell(position) {
   return {
-    img: createBulletImage(),
+    img: createTankShellImage(),
     x: position.x,
     y: position.y,
-    height: bulletSize.width,
-    width: bulletSize.height,
+    height: tankShellSize.width,
+    width: tankShellSize.height,
     vx: 0,
     vy: 0,
-    update: updateRifleBullet,
-    draw: drawRifleBullet,
+    update: updateTankShell,
+    draw: drawTankShell,
     speed: 10,
   }
 }
 
-function createBulletImage() {
+function createTankShellImage() {
   const img = new Image()
   img.src = "img/enemy/weapon/tankShell.gif"
   return img
 }
 
-function drawRifleBullet() {
+function drawTankShell() {
   ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
 }
 
-function updateRifleBullet() {
+function updateTankShell() {
   this.x += this.vx
   this.y += this.vy
 }

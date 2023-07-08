@@ -25,6 +25,14 @@ export function gameLoop() {
     }
   }
 
+  for (let enemyTankShell of gameState.enemyTankShells) {
+    enemyTankShell.update()
+    enemyTankShell.draw()
+    if (isCollision(gameState.player, enemyTankShell)) {
+      gameState.player.hp -= 1
+    }
+  }
+
   drawPlayerStats()
   requestAnimationFrame(gameLoop)
 }
