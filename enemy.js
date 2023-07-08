@@ -21,8 +21,9 @@ export function createEnemy(enemy) {
     update: updateEnemy,
     updateDirection: updateEnemyDirection,
     fire: enemyFire,
-    rifleCooldown: false,
+    isWeaponCooldown: false,
     isPreparinToFire: false,
+    weaponCooldownTime: 2000
   } 
 }
 
@@ -40,9 +41,10 @@ export function createTank(enemy) {
     update: updateEnemy,
     updateDirection: updateEnemyDirection,
     fire: tankFire,
-    rifleCooldown: false,
+    isWeaponCooldown: false,
     isPreparinToFire: false,
     firePreparationTime: 1000,
+    weaponCooldownTime: 5000,
   } 
 }
 
@@ -59,24 +61,24 @@ function updateEnemy() {
   }
 }
 
-const rifleCooldownTime = 2000
+
 
 function enemyFire() {
-  if (!this.rifleCooldown) {
+  if (!this.isWeaponCooldown) {
     console.log('enemyFire: making ogon 🔥')
-    this.rifleCooldown = true
+    this.isWeaponCooldown = true
     enemyRifleFire(this)
 
     setTimeout(() => {
-      this.rifleCooldown = false
-    }, rifleCooldownTime)
+      this.isWeaponCooldown = false
+    }, this.weaponCooldownTime)
   }
 }
 
 function tankFire() {
-  if (!this.rifleCooldown) {
-    console.log('enemyFire: making ogon 🔥')
-    this.rifleCooldown = true
+  if (!this.isWeaponCooldown) {
+    console.log('TankFire: making ogon 🔥')
+    this.isWeaponCooldown = true
     this.isPreparinToFire = true
 
     setTimeout(() => {
@@ -85,8 +87,8 @@ function tankFire() {
     }, this.firePreparationTime)
 
     setTimeout(() => {
-      this.rifleCooldown = false
-    }, rifleCooldownTime)
+      this.isWeaponCooldown = false
+    }, this.weaponCooldownTime)
   }
 }
 
