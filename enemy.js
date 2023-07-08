@@ -22,6 +22,7 @@ export function createEnemy(enemy) {
     updateDirection: updateEnemyDirection,
     fire: enemyFire,
     rifleCooldown: false,
+    isPreparinToFire: false,
   } 
 }
 
@@ -38,8 +39,10 @@ export function createTank(enemy) {
     draw: drawEnemy,
     update: updateEnemy,
     updateDirection: updateEnemyDirection,
-    fire: enemyFire,
+    fire: tankFire,
     rifleCooldown: false,
+    isPreparinToFire: false,
+    firePreparationTime: 1000,
   } 
 }
 
@@ -49,9 +52,11 @@ function drawEnemy() {
 
 function updateEnemy() {
   this.updateDirection()
-  this.x += this.vx
-  this.y += this.vy
   this.fire()
+  if(!this.isPreparinToFire) {
+    this.x += this.vx
+    this.y += this.vy
+  }
 }
 
 const rifleCooldownTime = 2000
@@ -61,6 +66,23 @@ function enemyFire() {
     console.log('enemyFire: making ogon 🔥')
     this.rifleCooldown = true
     enemyRifleFire(this)
+
+    setTimeout(() => {
+      this.rifleCooldown = false
+    }, rifleCooldownTime)
+  }
+}
+
+function tankFire() {
+  if (!this.rifleCooldown) {
+    console.log('enemyFire: making ogon 🔥')
+    this.rifleCooldown = true
+    this.isPreparinToFire = true
+
+    setTimeout(() => {
+      enemyRifleFire(this)
+      this.isPreparinToFire = false
+    }, this.firePreparationTime)
 
     setTimeout(() => {
       this.rifleCooldown = false
