@@ -22,7 +22,7 @@ export function spawnPlayer() {
       isMovingDown: false,
       isMovingUp: false,
     },
-    speed: 2.5,
+    speed: 5,
   }
 }
 

@@ -12,7 +12,7 @@ export function createEnemy(enemy) {
     img: createImage(),
     x: enemy.x,
     y: enemy.y,
-    speed: 3,
+    speed: 1,
     height: enemySize.width,
     width: enemySize.height,
     vx: enemy.vx,
@@ -42,7 +42,7 @@ function enemyFire() {
   if (!this.rifleCooldown) {
     console.log('enemyFire: making ogon 🔥')
     this.rifleCooldown = true
-    enemyRifleFire(this.x, this.y)
+    enemyRifleFire(this)
 
     setTimeout(() => {
       this.rifleCooldown = false
