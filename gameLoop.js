@@ -20,6 +20,9 @@ export function gameLoop() {
   for (let enemyBullet of gameState.enemyBullets) {
     enemyBullet.update()
     enemyBullet.draw()
+    if (isCollision(gameState.player, enemyBullet)) {
+      gameState.player.hp -= 1
+    }
   }
 
   drawPlayerStats()

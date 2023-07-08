@@ -9,19 +9,42 @@ export const enemySize = {
 
 export function createEnemy(enemy) {
   return {
-    img: createImage(),
+    img: createImage('enemiesImg/orc_idle.png'),
     x: enemy.x,
     y: enemy.y,
     speed: 1,
     height: enemySize.width,
     width: enemySize.height,
-    vx: enemy.vx,
-    vy: enemy.vy,
+    vx: 0,
+    vy: 0,
     draw: drawEnemy,
     update: updateEnemy,
     updateDirection: updateEnemyDirection,
     fire: enemyFire,
-    rifleCooldown: false,
+    isWeaponCooldown: false,
+    isPreparinToFire: false,
+    weaponCooldownTime: 2000
+  } 
+}
+
+export function createTank(enemy) {
+  return {
+    img: createImage('enemiesImg/tank.png'),
+    x: enemy.x,
+    y: enemy.y,
+    speed: 1,
+    height: enemySize.width,
+    width: enemySize.height,
+    vx: 0,
+    vy: 0,
+    draw: drawEnemy,
+    update: updateEnemy,
+    updateDirection: updateEnemyDirection,
+    fire: tankFire,
+    isWeaponCooldown: false,
+    isPreparinToFire: false,
+    firePreparationTime: 1000,
+    weaponCooldownTime: 5000,
   } 
 }
 
@@ -31,28 +54,47 @@ function drawEnemy() {
 
 function updateEnemy() {
   this.updateDirection()
-  this.x += this.vx
-  this.y += this.vy
   this.fire()
-}
-
-const rifleCooldownTime = 2000
-
-function enemyFire() {
-  if (!this.rifleCooldown) {
-    console.log('enemyFire: making ogon 🔥')
-    this.rifleCooldown = true
-    enemyRifleFire(this)
-
-    setTimeout(() => {
-      this.rifleCooldown = false
-    }, rifleCooldownTime)
+  if(!this.isPreparinToFire) {
+    this.x += this.vx
+    this.y += this.vy
   }
 }
 
-function createImage() {
+
+
+function enemyFire() {
+  if (!this.isWeaponCooldown) {
+    console.log('enemyFire: making ogon 🔥')
+    this.isWeaponCooldown = true
+    enemyRifleFire(this)
+
+    setTimeout(() => {
+      this.isWeaponCooldown = false
+    }, this.weaponCooldownTime)
+  }
+}
+
+function tankFire() {
+  if (!this.isWeaponCooldown) {
+    console.log('TankFire: making ogon 🔥')
+    this.isWeaponCooldown = true
+    this.isPreparinToFire = true
+
+    setTimeout(() => {
+      enemyRifleFire(this)
+      this.isPreparinToFire = false
+    }, this.firePreparationTime)
+
+    setTimeout(() => {
+      this.isWeaponCooldown = false
+    }, this.weaponCooldownTime)
+  }
+}
+
+function createImage(src) {
   const img = new Image()
-  img.src = "enemiesImg/orc_idle.png"
+  img.src = src
   return img
 }
 
