@@ -1,18 +1,24 @@
-import { gameState } from '../gameState.js'
-import { ctx, canvas} from "../canvas.js"
+import { ctx, canvas } from "../canvas.js"
+import { gameState } from "../gameState.js"
 
 export const bulletSize = {
   width: 20,
   height: 20,
 }
 
-export function enemyRifleFire(x, y) {
+export function enemyRifleFire(enemy) {
+  const distX = (enemy.x + enemy.width / 2) - (gameState.player.x + gameState.player.width / 2)
+  const distY = (enemy.y + enemy.height / 2) - (gameState.player.y + gameState.player.height / 2)
+  const dist = Math.sqrt(distX * distX + distY * distY)
+
   const bullet = createRifleBullet({
-    x: x,
-    y: y,
-    vx: 5,
-    vy: 5,
+    x: enemy.x,
+    y: enemy.y,
   })
+
+  bullet.vx = - distX / dist * bullet.speed
+  bullet.vy = - distY / dist * bullet.speed
+
   gameState.enemyBullets.push(bullet)
 }
 
@@ -23,10 +29,11 @@ function createRifleBullet(position) {
     y: position.y,
     height: bulletSize.width,
     width: bulletSize.height,
-    vx: position.vx,
-    vy: position.vy,
+    vx: 0,
+    vy: 0,
     update: updateRifleBullet,
     draw: drawRifleBullet,
+    speed: 10,
   }
 }
 

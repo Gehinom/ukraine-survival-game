@@ -14,7 +14,6 @@ export function gameLoop() {
     enemy.draw()
     if (isCollision(gameState.player, enemy)) {
       gameState.player.hp -= 1
-      console.log(gameState.player.hp)
     }
   }
 
