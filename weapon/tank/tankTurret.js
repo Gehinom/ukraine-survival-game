@@ -1,6 +1,7 @@
-import { ctx } from "../canvas.js"
-import { createImage } from "../image.js"
-import { gameState } from "../gameState.js"
+import { ctx } from "../../canvas.js"
+import { createImage } from "../../image.js"
+import { gameState } from "../../gameState.js"
+import { shellExplosion } from "./shellExplosion.js"
 
 export const tankShellSize = {
   width: 20,
@@ -44,6 +45,10 @@ function createTankShell(position) {
   }
 }
 
+function explode() {
+  shellExplosion(this)
+}
+
 function createTankShellImage() {
   const img = new Image()
   img.src = "img/enemy/weapon/tankShell.gif"
@@ -57,39 +62,4 @@ function drawTankShell() {
 function updateTankShell() {
   this.x += this.vx
   this.y += this.vy
-}
-
-function explode() {
-  console.log('Tank shell boom 🔥')
-  const explosion = createExplosion(this)
-  gameState.tankShellExplosions.push(explosion)
-
-  setTimeout(function() {
-    removeTankShellExplosion(explosion)
-  }, explosion.animationDuration)
-
-}
-
-function removeTankShellExplosion(explosion) {
-  const index = gameState.tankShellExplosions.indexOf(explosion)
-  gameState.tankShellExplosions.splice(index, 1)
-}
-
-export function drawExplosion(explosion) {
-  ctx.save()
-  ctx.globalAlpha = 0.3
-  ctx.drawImage(explosion.img, explosion.x, explosion.y, explosion.width, explosion.height)
-  ctx.restore()
-
-}
-
-function createExplosion(shell) {
-  return {
-    img: createImage('img/enemy/weapon/tank-shell-explosion.webp'),
-    x: shell.x,
-    y: shell.y,
-    width: 358 / 2,
-    height: 200 / 2,
-    animationDuration: 500,
-  }
 }

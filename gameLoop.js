@@ -2,7 +2,7 @@ import { gameState } from "./gameState.js"
 import { ctx, canvas} from "./canvas.js"
 import { isCollision } from "./collisions.js"
 import { drawPlayerStats } from "./playerStats.js"
-import { drawExplosion } from "./weapon/tankTurret.js"
+import { drawExplosion } from "./weapon/tank/shellExplosion.js"
 
 export function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)

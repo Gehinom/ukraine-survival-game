@@ -1,7 +1,7 @@
 import { ctx } from "../canvas.js"
 import { createImage } from "../image.js"
 import { updateEnemyDirection } from "./enemy.js"
-import { enemyTankFire } from "../weapon/tankTurret.js"
+import { enemyTankFire } from "../weapon/tank/tankTurret.js"
 
 export const tankSize = {
   width: 50,
