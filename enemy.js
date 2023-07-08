@@ -9,7 +9,25 @@ export const enemySize = {
 
 export function createEnemy(enemy) {
   return {
-    img: createImage(),
+    img: createImage('enemiesImg/orc_idle.png'),
+    x: enemy.x,
+    y: enemy.y,
+    speed: 1,
+    height: enemySize.width,
+    width: enemySize.height,
+    vx: 0,
+    vy: 0,
+    draw: drawEnemy,
+    update: updateEnemy,
+    updateDirection: updateEnemyDirection,
+    fire: enemyFire,
+    rifleCooldown: false,
+  } 
+}
+
+export function createTank(enemy) {
+  return {
+    img: createImage('enemiesImg/tank.png'),
     x: enemy.x,
     y: enemy.y,
     speed: 1,
@@ -50,9 +68,9 @@ function enemyFire() {
   }
 }
 
-function createImage() {
+function createImage(src) {
   const img = new Image()
-  img.src = "enemiesImg/orc_idle.png"
+  img.src = src
   return img
 }
 

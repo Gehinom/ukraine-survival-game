@@ -1,10 +1,10 @@
 import { gameState } from "./gameState.js"
-import { createEnemy, enemySize } from "./enemy.js"
+import { createEnemy, enemySize, createTank } from "./enemy.js"
 
 export function spawnEnemies() {
   const enemiesNum = 10
   spawnInfantryWaveNorth(enemiesNum)
-  spawnArtilleryWaveWest(enemiesNum)
+  spawnTankWaveWest(enemiesNum)
 }
 
 function spawnInfantryWaveNorth(enemiesNum) {
@@ -17,9 +17,9 @@ function spawnInfantryWaveNorth(enemiesNum) {
   }
 }
 
-function spawnArtilleryWaveWest(enemiesNum) {
+function spawnTankWaveWest(enemiesNum) {
   for (let i = 0; i < enemiesNum; i++) {
-    const enemy = createEnemy({
+    const enemy = createTank({
       x: -enemySize.width,
       y: i * (enemySize.height + 50),
     })
