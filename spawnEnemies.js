@@ -1,5 +1,5 @@
 import { gameState } from "./gameState.js"
-import { createEnemy, enemySize, createTank } from "./enemy.js"
+import { createEnemy, enemySize, createTank } from "./enemy/enemy.js"
 
 export function spawnEnemies() {
   const enemiesNum = 10

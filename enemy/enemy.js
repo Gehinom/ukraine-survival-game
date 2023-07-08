@@ -1,7 +1,7 @@
-import { ctx } from "./canvas.js"
-import { enemyRifleFire } from "./weapon/rifle.js"
-import { gameState } from "./gameState.js"
-import { enemyTankFire } from "./weapon/tankTurret.js"
+import { ctx } from "../canvas.js"
+import { enemyRifleFire } from "../weapon/rifle.js"
+import { gameState } from "../gameState.js"
+import { enemyTankFire } from "../weapon/tankTurret.js"
 
 export const enemySize = {
   width: 50,
