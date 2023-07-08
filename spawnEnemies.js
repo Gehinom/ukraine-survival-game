@@ -12,8 +12,6 @@ function spawnInfantryWaveNorth(enemiesNum) {
     const enemy = createEnemy({
       x: i * 100,
       y: -enemySize.height,
-      vx: 0,
-      vy: 1,
     })
     gameState.enemies.push(enemy)
   }
@@ -24,8 +22,6 @@ function spawnArtilleryWaveWest(enemiesNum) {
     const enemy = createEnemy({
       x: -enemySize.width,
       y: i * (enemySize.height + 50),
-      vx: 0,
-      vy: 1,
     })
     gameState.enemies.push(enemy)
   }
