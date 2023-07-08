@@ -28,7 +28,7 @@ export function spawnPlayer() {
 
 function createImage() {
   const img = new Image()
-  img.src = "playerImg/saint-javelin-skin-1.webp"
+  img.src = "img/player/saint-javelin-skin-1.webp"
   return img
 }
 
