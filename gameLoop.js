@@ -12,9 +12,9 @@ export function gameLoop() {
   for (let enemy of gameState.enemies) {
     let distX = (gameState.player.x + gameState.player.width / 2) - (enemy.x + enemy.width / 2)
     let distY = (gameState.player.y + gameState.player.height / 2) - (enemy.y + enemy.height / 2)
-    let distSq = Math.sqrt(distX + distY)
-    enemy.vx = distX / distSq * 0.1
-    enemy.vy = distY / distSq * 0.1
+    let distSq = Math.sqrt(distX * distX + distY * distY)
+    enemy.vx = distX / distSq * enemy.speed
+    enemy.vy = distY / distSq * enemy.speed
     enemy.update()
     enemy.draw()
     if (isCollision(gameState.player, enemy)) {
