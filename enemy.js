@@ -11,6 +11,7 @@ export function createEnemy(enemy) {
     img: createImage(),
     x: enemy.x,
     y: enemy.y,
+    speed: 3,
     height: enemySize.width,
     width: enemySize.height,
     vx: enemy.vx,
