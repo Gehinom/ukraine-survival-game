@@ -1,6 +1,7 @@
 import { ctx } from "./canvas.js"
 import { enemyRifleFire } from "./weapon/rifle.js"
 import { gameState } from "./gameState.js"
+import { enemyTankFire } from "./weapon/tankTurret.js"
 
 export const enemySize = {
   width: 50,
@@ -82,7 +83,7 @@ function tankFire() {
     this.isPreparinToFire = true
 
     setTimeout(() => {
-      enemyRifleFire(this)
+      enemyTankFire(this)
       this.isPreparinToFire = false
     }, this.firePreparationTime)
 
