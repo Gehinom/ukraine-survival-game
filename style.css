@@ -1,5 +1,6 @@
 #canvas1 {
-  background-color: grey;
+  background: url("img/ground/ground.avif");
+  background-size: cover;
 }
 * {
   margin: 0;
