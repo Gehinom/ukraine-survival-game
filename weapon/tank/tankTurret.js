@@ -1,5 +1,7 @@
-import { ctx } from "../canvas.js"
-import { gameState } from "../gameState.js"
+import { ctx } from "../../canvas.js"
+import { createImage } from "../../image.js"
+import { gameState } from "../../gameState.js"
+import { shellExplosion } from "./shellExplosion.js"
 
 export const tankShellSize = {
   width: 20,
@@ -22,6 +24,11 @@ export function enemyTankFire(enemy) {
   gameState.enemyTankShells.push(tankShell)
 }
 
+function removeShell(tankShell) {
+  const index = gameState.enemyTankShells.indexOf(tankShell)
+  gameState.enemyTankShells.splice(index, 1)
+}
+
 function createTankShell(position) {
   return {
     img: createTankShellImage(),
@@ -34,7 +41,12 @@ function createTankShell(position) {
     update: updateTankShell,
     draw: drawTankShell,
     speed: 10,
+    explode,
   }
+}
+
+function explode() {
+  shellExplosion(this)
 }
 
 function createTankShellImage() {

@@ -2,6 +2,7 @@ import { gameState } from "./gameState.js"
 import { ctx, canvas} from "./canvas.js"
 import { isCollision } from "./collisions.js"
 import { drawPlayerStats } from "./playerStats.js"
+import { drawExplosion } from "./weapon/tank/shellExplosion.js"
 
 export function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -29,8 +30,12 @@ export function gameLoop() {
     enemyTankShell.update()
     enemyTankShell.draw()
     if (isCollision(gameState.player, enemyTankShell)) {
-      gameState.player.hp -= 1
+      enemyTankShell.explode()
     }
+  }
+
+  for (let explosion of gameState.tankShellExplosions) {
+    drawExplosion(explosion)
   }
 
   drawPlayerStats()
