@@ -40,7 +40,12 @@ function createTankShell(position) {
     vy: 0,
     update: updateTankShell,
     draw: drawTankShell,
+    isDestinationReached: isTankShellReachedDestination,
     speed: 10,
+    destination: {
+      x: gameState.player.x,
+      y: gameState.player.y,
+    },
     explode,
   }
 }
@@ -63,3 +68,12 @@ function updateTankShell() {
   this.x += this.vx
   this.y += this.vy
 }
+
+function isTankShellReachedDestination() {
+  if (
+    Math.abs(this.x - this.destination.x) <= Math.abs(this.vx) ||
+    Math.abs(this.y - this.destination.y) <= Math.abs(this.vy)
+  ) 
+    return true
+  }
+  

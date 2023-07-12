@@ -29,13 +29,23 @@ export function gameLoop() {
   for (let enemyTankShell of gameState.enemyTankShells) {
     enemyTankShell.update()
     enemyTankShell.draw()
-    if (isCollision(gameState.player, enemyTankShell)) {
+    if (
+      isCollision(gameState.player, enemyTankShell) ||
+      enemyTankShell.isDestinationReached()
+    ) {
       enemyTankShell.explode()
     }
   }
 
   for (let explosion of gameState.tankShellExplosions) {
     drawExplosion(explosion)
+    if (
+      !explosion.isDamageDone &&
+      isCollision(gameState.player, explosion)
+    ) {
+      gameState.player.hp -= explosion.damage
+      explosion.isDamageDone = true
+    }
   }
 
   drawPlayerStats()
