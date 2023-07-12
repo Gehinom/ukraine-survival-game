@@ -33,6 +33,8 @@ function createExplosion(shell) {
     y: shell.y,
     width: 358 / 2,
     height: 200 / 2,
+    damage: 20,
+    isDamageDone: false,
     animationDuration: 500,
   }
 }
